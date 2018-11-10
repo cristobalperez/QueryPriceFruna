@@ -19,18 +19,24 @@
                         HttpSession se = request.getSession();
                        boolean respuesta= Clases.Persona.iniciar_sesion(p);
                         if(respuesta!=false){
+                                se.setAttribute("nombre", p.getNombre());
+                                se.setAttribute("rut", p.getRut());   
                             if (p.getPerfil()==1) {
-                                se.setAttribute("nombre", p.getNombre());
-                                se.setAttribute("rut", p.getRut());   
-                                out.print("<H1>Bievenido "+se.getAttribute("nombre")+"</H1>");
+                                response.sendRedirect("inicio.jsp");
                                 }else{
-                                se.setAttribute("nombre", p.getNombre());
-                                se.setAttribute("rut", p.getRut());   
-                                out.print("<H1>Bievenido "+se.getAttribute("nombre")+"</H1>");
-                                
+                                response.sendRedirect("inicio.jsp");
                             }
                             }else{
-                             out.println("Sesión no iniciada");
+                            %>
+                             <script language="javascript" type="text/javascript">
+                    function preguntar()
+                       {
+                             alert("Usted no posee una cuenta en FrunaQueryPrice");
+                            setTimeout(function(){location.href = "Login.jsp";},0.01);
+                           } 
+                     document.writeln(preguntar());
+                </script>
+                            <%
                         }
             %>
     </body>

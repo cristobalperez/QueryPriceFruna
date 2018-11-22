@@ -1,10 +1,9 @@
 <%-- 
-    Document   : cerrarsesion
-    Created on : 10-11-2018, 19:19:00
+    Document   : Modificar_perfil
+    Created on : 22-11-2018, 0:09:17
     Author     : Neo Jigoku
 --%>
 
-<%@page import="Clases.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -20,10 +19,8 @@ response.setDateHeader("Expires", 0);
         <title>JSP Page</title>
     </head>
     <body>
-            <%
-            Persona p = new Persona();
-            p.cerrarsesion(request, response);
-            %>
-                </script>
+        <a href="Modificar_cuenta.jsp"> Modificar perfil</a>
+        <a href="Cerrar_cuenta.jsp"> Cerrar cuenta</a>
+        <a href="cerrarsesion.jsp">Cerrar</a>
     </body>
 </html>

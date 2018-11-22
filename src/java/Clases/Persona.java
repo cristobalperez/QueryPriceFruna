@@ -45,7 +45,7 @@ public class Persona {
     /**
      * @param rut the rut to set
      */
-    public void setRut(String rut) throws Exception {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 
@@ -159,6 +159,7 @@ public class Persona {
     private int Perfil;
     //fin atributos
     // inicio contructor
+    //constructor registro
     public Persona(String rut,String nombre, String apellido, String sexo, String contraseña, String correo, String telefono, String direccion, int Perfil){
        this.rut=rut;
        this.nombre=nombre;
@@ -169,6 +170,15 @@ public class Persona {
        this.telefono=telefono;
        this.direccion=direccion;
       this.Perfil=Perfil;
+    }
+    public Persona(String nombre, String apellido, String sexo, String contraseña, String telefono, String direccion){
+       this.nombre=nombre;
+       this.apellido = apellido;
+       this.sexo = sexo;
+       this.contraseña=contraseña;
+       this.telefono=telefono;
+       this.direccion=direccion;
+
     }
     static String query;
     static Connection con=null;
@@ -182,6 +192,7 @@ public class Persona {
     public Persona(){
         
     }
+ 
    // fin contructor
    
     //metodos
@@ -232,8 +243,7 @@ return respuesta;
                 }
                return encontrado;
             }
-    public void cerrarsesion(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void cerrarsesion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession sesion = request.getSession(true);

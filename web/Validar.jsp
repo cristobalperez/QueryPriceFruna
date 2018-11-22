@@ -8,6 +8,13 @@
 <%@page import="Clases.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+response.setHeader( "Pragma", "no-cache" );
+response.addHeader( "Cache-Control", "must-revalidate" );
+response.addHeader( "Cache-Control", "no-cache" );
+response.addHeader( "Cache-Control", "no-store" );
+response.setDateHeader("Expires", 0);
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,9 +29,9 @@
                                 se.setAttribute("nombre", p.getNombre());
                                 se.setAttribute("rut", p.getRut());   
                             if (p.getPerfil()==1) {
-                                response.sendRedirect("inicio.jsp");
+                                response.sendRedirect("iniciocliente.jsp");
                                 }else{
-                                response.sendRedirect("inicio.jsp");
+                                response.sendRedirect("inicioadmin.jsp");
                             }
                             }else{
                             %>

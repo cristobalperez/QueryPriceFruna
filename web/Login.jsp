@@ -16,7 +16,6 @@
         <title>Fruna QueryPrice</title>
                     <script type="text/javascript">
             jQuery(function($){
-     $("#rut").mask("99.999.999-*");
      $("#cel").mask("99999999");
 });
 
@@ -47,7 +46,7 @@
             <form method="post" action="ingresar.jsp" id="register-form">   
             
           
-            <p>Rut: <input name="rut"  placeholder="Introduzca su RUT" type="text" id="rut"></p>
+                <p>Rut: <input name="rut"  placeholder="Introduzca su RUT" type="text" oninput="ValidaRut(this)" size="12"></p>
             <p>Nombre: <input name="nombre" placeholder="Introduzca su nombre" type="text" ></p>
             <p>Apellidos: <input name="apellido" placeholder="Introduzca su apellido" type="text" ></p> 
             <p>Sexo:  <input name="sexo" type="radio" value="Femenino" required>Femenino
@@ -58,12 +57,13 @@
             <p>Correo electrónico: <input name="correo" placeholder="Introduzca su correo" type="text" ></p>
             <p>Celular: +569<input name="telefono"  placeholder="Introduzca su N° de celular" type="text" id="cel"></p>
             <p>Dirección: <input name="direccion"  placeholder="Introduzca su dirección" type="text" ></p>
-            <p><input  type="submit" value="Registrarse" ></p>
+            <p><input  type="submit" value="Registrarse" onclick="validar_clave(e)"></p>
            
         </form>
         </div>
         
     </center>
+        <script src="js/ValidarRut.js"></script>
  <script type="text/javascript">
     
     function validar_clave(e) {

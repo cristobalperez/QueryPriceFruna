@@ -35,6 +35,10 @@ $(window).load(function() {
          <a href="Login.jsp">Volver al inicio</a>
         <% }else{ %>
         <h1>Administrador conectado: <%=sesions.getAttribute("nombre")%></h1>
+        <hr>
+        <h1>Gestión de tienda</h1>
+        <hr>
+    <center>
   <table border="1">
             
             <thead>
@@ -60,6 +64,7 @@ $(window).load(function() {
        }
        %>
         </table>
+    </center>
         <a href="nueva_tienda.jsp"> Ingresar nueva tienda</a>
         <hr>
         <a href="inicioadmin.jsp"> <-- volver atrás</a>

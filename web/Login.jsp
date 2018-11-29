@@ -35,6 +35,9 @@
             <div class="button"><input name="btnEnviar" type="submit" value="Ingresar"></div>
         </div>            
        </form>
+        <div class="wrapper">
+            <a href="ver_producto.jsp">Ver productos</a>
+        </div>
         
                 <center>
         <h1>Registrate gratis</h1>
@@ -46,7 +49,7 @@
             <form method="post" action="ingresar.jsp" id="register-form">   
             
           
-                <p>Rut: <input name="rut"  placeholder="Introduzca su RUT" type="text" oninput="ValidaRut(this)" size="12"></p>
+            <p>Rut: <input name="rut"  placeholder="Introduzca su RUT" type="text" oninput="ValidaRut(this)" size="12"></p>
             <p>Nombre: <input name="nombre" placeholder="Introduzca su nombre" type="text" ></p>
             <p>Apellidos: <input name="apellido" placeholder="Introduzca su apellido" type="text" ></p> 
             <p>Sexo:  <input name="sexo" type="radio" value="Femenino" required>Femenino

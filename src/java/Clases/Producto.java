@@ -107,8 +107,7 @@ public class Producto {
         this.precio= precio;
         this.stock=stock;
     }
-    public Producto(int id){
-    this.id=id;
+    public Producto(){
     }
     public Producto(String nombre){
     this.nombre=nombre;

@@ -127,13 +127,13 @@ public static boolean Modificar_producto(Producto p){
 return respuesta;
     
 }
-public static boolean Eliminar_producto(Producto p){
+public static boolean Eliminar_producto(int id){
       query="DELETE FROM producto WHERE id=?;";
     boolean respuesta=false;
     try {
     con=datos.myConexion.Conexion();
     pstam=con.prepareStatement(query);
-    pstam.setInt(1, p.getId());
+    pstam.setInt(1, id);
     pstam.executeUpdate();
     respuesta = true;        
     con.close();
@@ -142,5 +142,51 @@ public static boolean Eliminar_producto(Producto p){
         return respuesta;
     }
     return respuesta; 
+}
+public static boolean modificar_datos_admin(Persona p){
+    boolean respuesta=false;
+       query= "UPDATE persona SET nombre=?, apellido=?, sexo=?, password=?, telefono=?, direccion=? where rut=?;";
+        try {
+      con=myConexion.Conexion();
+           pstam= con.prepareStatement(query);
+  
+            pstam.setString(1, p.getNombre());
+            pstam.setString(2, p.getApellido());
+            pstam.setString(3, p.getSexo());
+            pstam.setString(4, p.getContraseña());
+            pstam.setString(5, p.getTelefono());
+            pstam.setString(6, p.getDireccion());
+            pstam.setString(7, p.getRut());
+            pstam.executeUpdate();
+           respuesta=true;
+            con.close();
+            pstam.close();
+        } catch (SQLException e) {
+           respuesta=false;
+        }
+return respuesta;
+}
+public static boolean Verificar_correo_admin(Persona p){
+                    boolean encontrado=false;
+                 query= "SELECT rut FROM persona WHERE correo=?;" ;        
+                try {
+                    con=myConexion.Conexion();
+                    pstam=con.prepareStatement(query);
+                    pstam.setString(1, p.getRut());
+                    pstam.setString(2, p.getCorreo());
+                    rst=pstam.executeQuery();
+                    if(rst.next()){
+                        if(p.getRut().equals(rst.getString("rut"))){
+                        encontrado=false;
+                        }else{
+                        encontrado=true;
+                        }
+                    }else{
+                        encontrado=false;
+                    }
+                } catch (Exception e) {
+                }
+               return encontrado;
+  
 }
 }

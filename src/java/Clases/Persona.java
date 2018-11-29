@@ -178,16 +178,28 @@ public class Persona {
        this.contraseña=contraseña;
        this.telefono=telefono;
        this.direccion=direccion;
-
+    }
+    public Persona(String nombre, String apellido, String sexo, String contraseña, String telefono, String direccion, String rut){
+       this.nombre=nombre;
+       this.apellido = apellido;
+       this.sexo = sexo;
+       this.contraseña=contraseña;
+       this.telefono=telefono;
+       this.direccion=direccion;
+       this.rut=rut;
     }
     static String query;
     static Connection con=null;
     static Statement stm = null;
     static ResultSet rst=null;
     static PreparedStatement pstam = null;
+    
     public Persona(String rut, String contraseña){
         this.rut=rut;
         this.contraseña=contraseña;
+    }
+    public Persona(String correo){
+        this.correo=correo;
     }
     public Persona(){
         
@@ -249,6 +261,22 @@ return respuesta;
         HttpSession sesion = request.getSession(true);
         sesion.invalidate();
         response.sendRedirect("Login.jsp");
+    }
+    public static Persona Datos_cliente(String rut){
+            query = "SELECT * FROM persona WHERE rut=?;";
+Persona cliente = null;
+  try{
+        con=datos.myConexion.Conexion();
+       pstam= con.prepareStatement(query);
+        pstam.setString(1, rut);
+        rst = pstam.executeQuery();
+        while(rst.next()){
+             cliente = new Persona (rst.getString("rut"), rst.getString("nombre"), rst.getString("apellido"), rst.getString("sexo"),rst.getString("password"),rst.getString("correo"),rst.getString("telefono"),rst.getString("direccion"),rst.getInt("id_perfil"));
+        }
+  }catch (SQLException ex){
+      return null;
+  }
+    return cliente;
     }
 }
 

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : ingresar
-    Created on : 06-11-2018, 16:47:14
+    Document   : Update_cliente
+    Created on : 23-11-2018, 12:49:37
     Author     : Neo Jigoku
 --%>
-
 
 <%@page import="Clases.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,32 +36,32 @@ $(window).load(function() {
             String sexo =request.getParameter("sexo");
             String pass =request.getParameter("pass");
             String correo =request.getParameter("correo");
-            String telefono ="+569" + request.getParameter("telefono");
+            String telefono = request.getParameter("telefono");
             String direccion =request.getParameter("direccion");
               
-       Persona pe = new Persona(rut,nombre,apellido,sexo,pass,correo,telefono,direccion,1);
-       Persona p = new Persona(rut,correo); 
-             boolean res=Clases.Cliente.Verificar_cliente(p);
+       Persona pe = new Persona(nombre,apellido,sexo,pass,telefono,direccion, rut);
+       Persona p = new Persona(correo); 
+             boolean res=Clases.Cliente.Verificar_correo_cliente(p);
              if (res==true) {
                                             %>
                              <script language="javascript" type="text/javascript">
                     function preguntar()
                        {
-                             alert("Rut y/o correo electrónico ya poseen una cuenta registrada");
-                            setTimeout(function(){location.href = "Login.jsp";},0.01);
+                             alert("Este correo electrónico ya posee una cuenta registrada");
+                            setTimeout(function(){location.href = "Login.jsp";},0.1);
                            } 
                      document.writeln(preguntar());
                 </script>
                             <% 
                  }else{
-      boolean respuesta=Clases.Persona.Registrar(pe);
+      boolean respuesta=Clases.Cliente.modificar_datos_personales(pe);
       if(respuesta!=false){
                                               %>
                              <script language="javascript" type="text/javascript">
                     function preguntar()
                        {
-                             alert("Cuentra registrada, bienvenido a FrunaQueryPrice");
-                            setTimeout(function(){location.href = "Login.jsp";},0.1);
+                             alert("Cuenta Actualizada");
+                            setTimeout(function(){location.href = "iniciocliente.jsp";},5000);
                            } 
                      document.writeln(preguntar());
                 </script>
@@ -74,6 +73,5 @@ $(window).load(function() {
                 }
 
         %>
-        
     </body>
 </html>

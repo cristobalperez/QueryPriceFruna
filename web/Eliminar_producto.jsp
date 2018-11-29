@@ -22,8 +22,7 @@ response.setDateHeader("Expires", 0);
     <body>
       <%
     int id= Integer.parseInt(request.getParameter("id"));
-Producto p = new Producto(id);
-    boolean res= Clases.Administrador.Eliminar_producto(p);
+    boolean res= Clases.Administrador.Eliminar_producto(id);
     if (res!=false){
                                                  %>
                              <script language="javascript" type="text/javascript">

@@ -41,7 +41,9 @@ $(window).load(function() {
          <a href="Login.jsp">Volver al inicio</a>
         <% }else{ %>
         <h1>Administrador conectado: <%=sesions.getAttribute("nombre")%></h1>
+        <hr>
                 <h1>Ingresa Nueva Tienda</h1>
+        <hr>
          <div>
          <h1>QueryPrice</h1>
         </div>

@@ -40,22 +40,24 @@ $(window).load(function() {
         <% }else{
   
      int id = Integer.parseInt(request.getParameter("id"));
-Producto pr = new Producto(id);
-        List<Producto> productos = Clases.Producto.Get_One_Producto(pr);
-         for(int i=0;i<productos.size();i++){
+
+        Producto producto = Models.ModeloProducto.Get_One_Producto(id);
+       
         %>
         <h1>Administrador conectado: <%=sesions.getAttribute("nombre")%></h1>
+        <hr>
                   <h1>Actualizar Producto</h1>
+        <hr>
          <div>
          <h1>QueryPrice</h1>
         </div>
         <div>
             <form method="post" action="Update_producto.jsp" id="register-form">   
-                <p><input name="id" type="text" value="<%=productos.get(i).getId()%>" hidden></p>
-            <p>Nombre: <input name="nombre"  placeholder="Introduzca nombre producto" readonly type="text"value="<%=productos.get(i).getNombre()%>" ></p>
-            <p>Descripción: <br><textarea name="descripcion" cols="40" rows="5" id="desc" > <%=productos.get(i).getDescripcion()%></textarea></p>
-            <p>Precio: <input name="precio" placeholder="Introduzca el precio" type="text" value="<%=productos.get(i).getPrecio()%>"></p> 
-            <p>Stock: <input name="stock" placeholder="Introduzca el stock" type="text" value="<%=productos.get(i).getStock()%>"></p> 
+                <p><input name="id" type="text" value="<%=producto.getId()%>" hidden></p>
+            <p>Nombre: <input name="nombre"  placeholder="Introduzca nombre producto" readonly type="text"value="<%=producto.getNombre()%>" ></p>
+            <p>Descripción: <br><textarea name="descripcion" cols="40" rows="5" id="desc" > <%=producto.getDescripcion()%></textarea></p>
+            <p>Precio: <input name="precio" placeholder="Introduzca el precio" type="text" value="<%=producto.getPrecio()%>"></p> 
+            <p>Stock: <input name="stock" placeholder="Introduzca el stock" type="text" value="<%=producto.getStock()%>"></p> 
             <p><input  type="submit" value="Actualizar" onclick="validar_longitud(e)"></p>
         </form>
             <a href='gestor_producto.jsp'><--Volver atrás</a><br>
@@ -84,8 +86,6 @@ Producto pr = new Producto(id);
       }
                       }
                   </script>
-                    <%}
-                    %>
     </body>
     </body>
 </html>

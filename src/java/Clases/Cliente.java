@@ -42,9 +42,32 @@ public static boolean Verificar_cliente(Persona p){
                return encontrado;
   
 }
+public static boolean Verificar_correo_cliente(Persona p){
+                    boolean encontrado=false;
+                 query= "SELECT rut FROM persona WHERE correo=?;" ;        
+                try {
+                    con=myConexion.Conexion();
+                    pstam=con.prepareStatement(query);
+                    pstam.setString(1, p.getRut());
+                    pstam.setString(2, p.getCorreo());
+                    rst=pstam.executeQuery();
+                    if(rst.next()){
+                        if(p.getRut().equals(rst.getString("rut"))){
+                        encontrado=false;
+                        }else{
+                        encontrado=true;
+                        }
+                    }else{
+                        encontrado=false;
+                    }
+                } catch (Exception e) {
+                }
+               return encontrado;
+  
+}
             public static boolean modificar_datos_personales(Persona p){
 boolean respuesta=false;
-       query= "UPDATE persona SET nombre=?, apellido=?, sexo=?, password=?, telefono=?, direccion=?;";
+       query= "UPDATE persona SET nombre=?, apellido=?, sexo=?, password=?, telefono=?, direccion=? where rut=?;";
         try {
       con=myConexion.Conexion();
            pstam= con.prepareStatement(query);
@@ -55,6 +78,7 @@ boolean respuesta=false;
             pstam.setString(4, p.getContraseña());
             pstam.setString(5, p.getTelefono());
             pstam.setString(6, p.getDireccion());
+            pstam.setString(7, p.getRut());
             pstam.executeUpdate();
            respuesta=true;
             con.close();

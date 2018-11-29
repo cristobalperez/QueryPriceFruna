@@ -1,6 +1,6 @@
 <%-- 
-    Document   : gestor_producto
-    Created on : 21-11-2018, 20:41:27
+    Document   : ver_producto
+    Created on : 22-11-2018, 16:49:40
     Author     : Neo Jigoku
 --%>
 
@@ -29,14 +29,7 @@ $(window).load(function() {
     </head>
     <body>
         <div class="loader"></div>
-              <% HttpSession sesions = request.getSession();
-                    if(sesions.getAttribute("nombre")==null&&sesions.getAttribute("rut")==null){
-         out.println("<h1>Acceso denegado</h1>");%>
-         <a href="Login.jsp">Volver al inicio</a>
-        <% }else{%>
-        <h1>Administrador conectado: <%=sesions.getAttribute("nombre")%></h1>
-        <hr>
-        <h1>Gestión de producto</h1>
+        <h1>Visor de productos</h1>
         <hr>
     <center>
   <table border="1">
@@ -54,19 +47,16 @@ $(window).load(function() {
            <td><%=productos.get(i).getNombre()%></td>
            <td><%=productos.get(i).getDescripcion()%></td>
            <td>$<%=productos.get(i).getPrecio()%></td>
-           <td><%=productos.get(i).getStock()%> unidades</td>
-           <td><a href="Modificar_producto.jsp?id=<%=productos.get(i).getId()%>">Editar</a></td>
-           <td><a href="Eliminar_producto.jsp?id=<%=productos.get(i).getId()%>">Eliminar</a></td>  
+           <td><%=productos.get(i).getStock()%> unidades</td> 
        </tr>
+            <hr>
        <%
        }
        %>
         </table>
     </center>
-        <a href='nuevo_producto.jsp'>Ingresar producto</a><br>
+      
         <hr>
-        <a href='inicioadmin.jsp'><--Volver atrás</a>
-        <a href="cerrarsesion.jsp">Cerrar Sesión</a>
-            <%}%>
+        <a href="Login.jsp">Iniciar sesión o registrarse</a>
     </body>
 </html>

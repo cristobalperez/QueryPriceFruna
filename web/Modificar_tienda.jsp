@@ -50,6 +50,9 @@ Tienda ti = new Tienda(id);
          for(int i=0;i<tiendas.size();i++){
         %>
         <h1>Administrador conectado: <%=sesions.getAttribute("nombre")%></h1>
+        <hr>
+        <h1>Modificar Tienda</h1>
+        <hr>
          <form action="Update_tienda.jsp" method="post">
      <table>
          <tbody>
